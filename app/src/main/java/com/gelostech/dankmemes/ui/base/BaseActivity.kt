@@ -11,7 +11,7 @@ import com.gelostech.dankmemes.R
 import com.gelostech.dankmemes.utils.Constants
 import com.gelostech.dankmemes.utils.SessionManager
 import com.gelostech.dankmemes.utils.TimeFormatter
-import com.google.android.gms.ads.MobileAds
+//import com.google.android.gms.ads.MobileAds
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.iid.FirebaseInstanceId
 import com.nostra13.universalimageloader.core.ImageLoader
@@ -31,9 +31,9 @@ open class BaseActivity : AppCompatActivity() {
         ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this))
         progressDialog = ProgressDialog(this)
 
-        MobileAds.initialize(this) {
-            Timber.e("Admob initialized: %s", it.toString())
-        }
+//        MobileAds.initialize(this) {
+//            Timber.e("Admob initialized: %s", it.toString())
+//        }
     }
 
     override fun onResume() {

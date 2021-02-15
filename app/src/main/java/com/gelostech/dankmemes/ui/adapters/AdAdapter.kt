@@ -11,9 +11,9 @@ import com.gelostech.dankmemes.R
 import com.gelostech.dankmemes.data.models.Item
 import com.gelostech.dankmemes.utils.inflate
 import com.gelostech.dankmemes.utils.legacyInflate
-import com.google.android.gms.ads.formats.MediaView
-import com.google.android.gms.ads.formats.UnifiedNativeAd
-import com.google.android.gms.ads.formats.UnifiedNativeAdView
+//import com.google.android.gms.ads.formats.MediaView
+//import com.google.android.gms.ads.formats.UnifiedNativeAd
+//import com.google.android.gms.ads.formats.UnifiedNativeAdView
 import kotlinx.android.synthetic.main.basic_layout.view.*
 import timber.log.Timber
 
@@ -45,15 +45,15 @@ class AdAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (items[position] is UnifiedNativeAd)
-            return AD
+//        if (items[position] is UnifiedNativeAd)
+//            return AD
 
         return MEME
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is AdHolder -> holder.bind(items[position] as UnifiedNativeAd)
+//            is AdHolder -> holder.bind(items[position] as UnifiedNativeAd)
             is ItemHolder -> holder.bind(items[position] as Item)
         }
     }
@@ -69,69 +69,69 @@ class AdAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     inner class AdHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private var adView: UnifiedNativeAdView = itemView.findViewById(R.id.ad_view)
-
-        init {
-            adView.mediaView = adView.findViewById(R.id.ad_media) as MediaView
-
-            // Register the view used for each individual asset.
-            adView.headlineView = adView.findViewById(R.id.ad_headline);
-            adView.bodyView = adView.findViewById(R.id.ad_body);
-            adView.callToActionView = adView.findViewById(R.id.ad_call_to_action);
-            adView.iconView = adView.findViewById(R.id.ad_icon);
-            adView.priceView = adView.findViewById(R.id.ad_price);
-            adView.starRatingView = adView.findViewById(R.id.ad_stars);
-            adView.storeView = adView.findViewById(R.id.ad_store);
-            adView.advertiserView = adView.findViewById(R.id.ad_advertiser)
-        }
-
-        fun bind(nativeAd: UnifiedNativeAd) {
-            (adView.headlineView as TextView).text = nativeAd.headline
-            (adView.bodyView as TextView).text = nativeAd.body
-            (adView.callToActionView as Button).text = nativeAd.callToAction
-
-            // These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
-            // check before trying to display them.
-            val icon = nativeAd.icon
-
-            if (icon == null) {
-                adView.iconView.visibility = View.INVISIBLE
-            } else {
-                (adView.iconView as ImageView).setImageDrawable(icon.drawable)
-                adView.iconView.visibility = View.VISIBLE
-            }
-
-            if (nativeAd.price == null) {
-                adView.priceView.visibility = View.INVISIBLE
-            } else {
-                adView.priceView.visibility = View.VISIBLE
-                (adView.priceView as TextView).text = nativeAd.price
-            }
-
-            if (nativeAd.store == null) {
-                adView.storeView.visibility = View.INVISIBLE
-            } else {
-                adView.storeView.visibility = View.VISIBLE
-                (adView.storeView as TextView).text = nativeAd.store
-            }
-
-            if (nativeAd.starRating == null) {
-                adView.starRatingView.visibility = View.INVISIBLE
-            } else {
-                (adView.starRatingView as RatingBar).rating = nativeAd.starRating.toFloat()
-                adView.starRatingView.visibility = View.VISIBLE
-            }
-
-            if (nativeAd.advertiser == null) {
-                adView.advertiserView.visibility = View.INVISIBLE
-            } else {
-                (adView.advertiserView as TextView).text = nativeAd.advertiser
-                adView.advertiserView.visibility = View.VISIBLE
-            }
-
-            // Assign native ad object to the native view.
-            adView.setNativeAd(nativeAd)
-        }
+//        private var adView: UnifiedNativeAdView = itemView.findViewById(R.id.ad_view)
+//
+//        init {
+//            adView.mediaView = adView.findViewById(R.id.ad_media) as MediaView
+//
+//            // Register the view used for each individual asset.
+//            adView.headlineView = adView.findViewById(R.id.ad_headline);
+//            adView.bodyView = adView.findViewById(R.id.ad_body);
+//            adView.callToActionView = adView.findViewById(R.id.ad_call_to_action);
+//            adView.iconView = adView.findViewById(R.id.ad_icon);
+//            adView.priceView = adView.findViewById(R.id.ad_price);
+//            adView.starRatingView = adView.findViewById(R.id.ad_stars);
+//            adView.storeView = adView.findViewById(R.id.ad_store);
+//            adView.advertiserView = adView.findViewById(R.id.ad_advertiser)
+//        }
+//
+//        fun bind(nativeAd: UnifiedNativeAd) {
+//            (adView.headlineView as TextView).text = nativeAd.headline
+//            (adView.bodyView as TextView).text = nativeAd.body
+//            (adView.callToActionView as Button).text = nativeAd.callToAction
+//
+//            // These assets aren't guaranteed to be in every UnifiedNativeAd, so it's important to
+//            // check before trying to display them.
+//            val icon = nativeAd.icon
+//
+//            if (icon == null) {
+//                adView.iconView.visibility = View.INVISIBLE
+//            } else {
+//                (adView.iconView as ImageView).setImageDrawable(icon.drawable)
+//                adView.iconView.visibility = View.VISIBLE
+//            }
+//
+//            if (nativeAd.price == null) {
+//                adView.priceView.visibility = View.INVISIBLE
+//            } else {
+//                adView.priceView.visibility = View.VISIBLE
+//                (adView.priceView as TextView).text = nativeAd.price
+//            }
+//
+//            if (nativeAd.store == null) {
+//                adView.storeView.visibility = View.INVISIBLE
+//            } else {
+//                adView.storeView.visibility = View.VISIBLE
+//                (adView.storeView as TextView).text = nativeAd.store
+//            }
+//
+//            if (nativeAd.starRating == null) {
+//                adView.starRatingView.visibility = View.INVISIBLE
+//            } else {
+//                (adView.starRatingView as RatingBar).rating = nativeAd.starRating.toFloat()
+//                adView.starRatingView.visibility = View.VISIBLE
+//            }
+//
+//            if (nativeAd.advertiser == null) {
+//                adView.advertiserView.visibility = View.INVISIBLE
+//            } else {
+//                (adView.advertiserView as TextView).text = nativeAd.advertiser
+//                adView.advertiserView.visibility = View.VISIBLE
+//            }
+//
+//            // Assign native ad object to the native view.
+//            adView.setNativeAd(nativeAd)
+//        }
 
     }
 

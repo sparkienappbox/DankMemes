@@ -4,8 +4,8 @@ import com.gelostech.dankmemes.R
 import com.gelostech.dankmemes.data.repositories.*
 import com.gelostech.dankmemes.ui.viewmodels.*
 import com.gelostech.dankmemes.utils.SessionManager
-import com.google.android.gms.ads.AdLoader
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+//import com.google.android.gms.ads.AdLoader
+//import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -31,7 +31,7 @@ val repositoriesModule = module {
 
 val viewModelsModule = module {
     viewModel { UsersViewModel(get()) }
-    viewModel { MemesViewModel(get(), get()) }
+    viewModel { MemesViewModel(get()) }
     viewModel { NotificationsViewModel(get()) }
     viewModel { ReportsViewModel(get()) }
     viewModel { CommentsViewModel(get()) }
@@ -41,15 +41,15 @@ val sessionManagerModule = module {
     single { SessionManager(androidApplication()) }
 }
 
-val googleSignClientModule = module {
-    single {
-        GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(androidApplication().getString(R.string.google_signin_key))
-                .requestEmail()
-                .build()
-    }
-}
-
-val adBuilderModule = module {
-    single { AdLoader.Builder(androidApplication(), androidApplication().getString(R.string.admob_native_ad_id)) }
-}
+//val googleSignClientModule = module {
+//    single {
+//        GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestIdToken(androidApplication().getString(R.string.google_signin_key))
+//                .requestEmail()
+//                .build()
+//    }
+//}
+//
+//val adBuilderModule = module {
+//    single { AdLoader.Builder(androidApplication(), androidApplication().getString(R.string.admob_native_ad_id)) }
+//}

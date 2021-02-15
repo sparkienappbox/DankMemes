@@ -58,9 +58,9 @@ class DankMemes : MultiDexApplication() {
                     firebaseModule,
                     repositoriesModule,
                     viewModelsModule,
-                    sessionManagerModule,
-                    googleSignClientModule,
-                    adBuilderModule
+                    sessionManagerModule
+//                    googleSignClientModule,
+//                    adBuilderModule
             ))
         }
 
